@@ -1,8 +1,8 @@
 import os
 import pytest
 import asyncio
-import mipy_iam.interactive as interactive
-import mipy_iam.db as db
+import mipy_env
+import mipy_db
 import mipy_aiofiles
 from mipy_users import create, by_id, by_email, all, update, delete_user
 
@@ -14,13 +14,13 @@ async def setup_temp_db():
     """
     temp_dir = await mipy_aiofiles.create_temp_folder()
     db_path = os.path.join(temp_dir, "test.db")
-    interactive.set_param("SQLITE_PATH", db_path)
+    mipy_env.set_param("SQLITE_PATH", db_path)
     print(f"Using test database at: {db_path}")
 
     yield  # Yield control to the test
 
     # Cleanup after the test
-    await db.close()
+    await mipy_db.close()
     await mipy_aiofiles.delete_folder(temp_dir)
     print(f"Cleaned up temporary directory: {temp_dir}")
 

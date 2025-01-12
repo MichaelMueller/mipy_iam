@@ -6,3 +6,5 @@ aioconsole
 python-dotenv
 pytest
 pytest-asyncio
+PyJWT
+passlib

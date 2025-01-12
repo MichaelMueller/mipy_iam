@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
-from mipy_iam.db import Base, get_sessionmaker
+from mipy_iam.mipy_db import Base, get_sessionmaker
 from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 import mipy_log

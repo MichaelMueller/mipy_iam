@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-import mipy_users, mipy_log, mipy_iam.db as db, mipy_iam.interactive as interactive
+import mipy_users, mipy_log, mipy_iam.mipy_db as mipy_db, mipy_iam.interactive as interactive
 import mipy_config
 import uvicorn
 
@@ -13,7 +13,7 @@ app.include_router(mipy_config.router)
 if __name__ == "__main__":
     
     log_level, _ = mipy_log.init()
-    db.init()
+    mipy_db.init()
     
     host = interactive.get_or_ask_and_wait_for_param("HOST", default="127.0.0.1", value_type=str)
     port = interactive.get_or_ask_and_wait_for_param("PORT", default="5000", value_type=int)
